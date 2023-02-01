@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    <record id="my_model_tree_view" model="ir.ui.view">
+        <field name="name">My Model Tree View</field>
+        <field name="model">my.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="additional_data" widget="text" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="my_model_view" model="ir.ui.view">
+        <field name="name">My Model View</field>
+        <field name="model">my.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="additional_data" widget="text" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="my_model_search" model="ir.ui.view">
+        <field name="name">My Model Search</field>
+        <field name="model">my.model</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="[
+                        '|', ('name','ilike',self), ('additional_data','ilike',self)]"/>
+                <field name="additional_data"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="my_model_action" model="ir.actions.act_window">
+        <field name="name">My Model</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">my.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Create Model's record
+            </p>
+        </field>
+    </record>
+    <menuitem id="my_model_menu" 
+              name="Custom Field"/>
+    
+    <menuitem id="sub_menu" 
+              parent="my_model_menu" 
+              name="Data" 
+              action="my_model_action"/>
+
+</odoo>
