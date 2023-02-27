@@ -1,10 +1,6 @@
 # JSON Field in Odoo 15
 This README will guide you through the process of creating a custom field in Odoo 15 that stores data as a JSON object.
 
-## Prerequisites
-1. Familiarity with Python and Odoo framework
-2. Access to an Odoo instance with version 15 or above
-
 ## Steps
 1. Create a new Python class called JsonField that inherits from the fields.Field class. This class will define the methods required to handle the storage and retrieval of JSON data in Odoo.
 2. Override the `convert_to_cache` and `convert_to_record` methods of the Field class.
